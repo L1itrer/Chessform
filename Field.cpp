@@ -1,22 +1,49 @@
 #include "Field.h"
-#include "Field.h"
 
 Field::Field()
 {
-	this->piece = {0};
+	Piece defaultPiece{ Empty, White };
+	this->piece = defaultPiece;
 }
 
-Field::Field(const Piece pieceType)
+Field::Field(PieceType pieceType)
 {
-	this->pieceType = pieceType;
+	this->piece.type = pieceType;
 }
 
-Piece Field::piece_type()
+Field::Field(PieceType pieceType, PieceColor pieceColor)
 {
-	return this->pieceType;
+	Piece newPiece{ pieceType, pieceColor };
+	this->piece = newPiece;
 }
 
-Piece Field::piece()
+PieceType Field::pieceType()
+{
+	return this->piece.type;
+}
+
+Piece Field::getPiece()
 {
 	return this->piece;
+}
+
+void Field::setPieceType(PieceType newPieceType)
+{
+	this->piece.type = newPieceType;
+}
+
+void Field::setPieceColor(PieceColor newPieceColor)
+{
+	this->piece.color = newPieceColor;
+}
+
+void Field::setPiece(Piece newPiece)
+{
+	this->piece = newPiece;
+}
+
+void Field::setPiece(PieceType newPieceType, PieceColor newPieceColor)
+{
+	this->piece.type = newPieceType;
+	this->piece.color = newPieceColor;
 }

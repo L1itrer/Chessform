@@ -34,7 +34,7 @@ endif()
 project ("ChessApp")
 
 # Add source to this project's executable.
-add_executable (ChessApp "ChessApp.cpp" "ChessApp.h"  "Board.h" "Board.cpp"  "Field.h" "Piece.h")
+add_executable (ChessApp "ChessApp.cpp" "ChessApp.h"  "Board.h" "Board.cpp"  "Field.h" "Field.cpp" "Piece.h")
 
 #set(raylib_VERBOSE 1)
 target_link_libraries(${PROJECT_NAME} raylib)

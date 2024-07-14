@@ -5,13 +5,23 @@
 
 
 class Field {
-public:
-	Field();
-	Field(const Piece pieceType);
-	PieceType piece_type();
-	Piece piece();
 private:
 	Piece piece;
+
+public:
+	Field();
+	Field(PieceType pieceType);
+	Field(PieceType pieceType, PieceColor pieceColor);
+	PieceType pieceType();
+	Piece getPiece();
+
+
+
+
+	void setPieceType(PieceType newPieceType);
+	void setPieceColor(PieceColor newPieceColor);
+	void setPiece(Piece newPiece);
+	void setPiece(PieceType newPieceType, PieceColor newPieceColor);
 
 
 };

@@ -6,6 +6,11 @@
 
 constexpr int DEFAULT_BOARD_SIZE = 8;
 
+typedef struct ChessCoordinate {
+	int number{};
+	char letter{};
+}ChessCoordinate;
+
 class Board {
 private:
 	std::array<std::array<Field, DEFAULT_BOARD_SIZE>, DEFAULT_BOARD_SIZE> fields {};
@@ -15,7 +20,10 @@ public:
 	Board();
 	~Board();
 	
-	void default_setup();
+	void defaultSetup();
+
+	Piece getPieceAt();
+	void setPieceAt(Piece piece);
 
 	void draw_board();
 	void draw_pieces();
