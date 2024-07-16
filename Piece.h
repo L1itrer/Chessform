@@ -9,12 +9,15 @@ typedef enum PieceType
 	Rook = 'R',
 	Queen = 'Q',
 	King = 'K',
+	Unavailable,
 	Empty = 0
 }PieceType;
 
 typedef enum PieceColor {
 	White,
-	Black
+	Black,
+	Red,
+	Blue
 }PieceColor;
 
 typedef struct Piece{
