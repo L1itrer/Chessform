@@ -17,12 +17,12 @@ Field::Field(PieceType pieceType, PieceColor pieceColor)
 	this->piece = newPiece;
 }
 
-PieceType Field::pieceType()
+PieceType Field::pieceType() const
 {
 	return this->piece.type;
 }
 
-Piece Field::getPiece()
+Piece Field::getPiece() const
 {
 	return this->piece;
 }

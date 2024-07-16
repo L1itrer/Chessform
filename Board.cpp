@@ -17,26 +17,30 @@ void Board::defaultSetup()
 {
 	for (int i = 0;i < DEFAULT_BOARD_SIZE;++i)
 	{
-		fields.at(i).at(1).setPiece(Pawn, Black);
-		fields.at(i).at(6).setPiece(Pawn, White);
+		setPieceAt(Pawn, White, {(static_cast<char>(i+'a')), 2});
+		setPieceAt(Pawn, Black, { (static_cast<char>(i + 'a')), 7 });
 	}
-	fields.at(0).at(0).setPiece(Rook, Black);
-	fields.at(7).at(0).setPiece(Rook, Black);
-	fields.at(0).at(7).setPiece(Rook, White);
-	fields.at(7).at(7).setPiece(Rook, White);
 
-	fields.at(1).at(0).setPiece(Knight, Black);
-	fields.at(6).at(0).setPiece(Knight, Black);
-	fields.at(1).at(7).setPiece(Knight, White);
-	fields.at(6).at(7).setPiece(Knight, White);
+	setPieceAt(Rook, White, { 'a', 1 });
+	setPieceAt(Rook, White, { 'h', 1 });
+	setPieceAt(Rook, Black, { 'a', 8 });
+	setPieceAt(Rook, Black, { 'h', 8 });
 
-	fields.at(0).at(0).setPiece(Bishop, Black);
-	fields.at(7).at(0).setPiece(Bishop, Black);
-	fields.at(0).at(7).setPiece(Bishop, White);
-	fields.at(7).at(7).setPiece(Bishop, White);
+	setPieceAt(Knight, White, { 'b', 1 });
+	setPieceAt(Knight, White, { 'g', 1 });
+	setPieceAt(Knight, Black, { 'b', 8 });
+	setPieceAt(Knight, Black, { 'g', 8 });
 
+	setPieceAt(Bishop, White, { 'c', 1 });
+	setPieceAt(Bishop, White, { 'f', 1 });
+	setPieceAt(Bishop, Black, { 'c', 8 });
+	setPieceAt(Bishop, Black, { 'f', 8 });
 
+	setPieceAt(Queen, White, { 'd', 1 });
+	setPieceAt(Queen, Black, { 'd', 8 });
 
+	setPieceAt(King, White, { 'e', 1 });
+	setPieceAt(King, Black, { 'e', 8 });
 }
 
 Piece Board::getPieceAt(ChessCoordinate coordinates)
@@ -61,4 +65,44 @@ void Board::setPieceAt(PieceType pieceType, PieceColor pieceColor, ChessCoordina
 	int actual_letter = coordinates.letter - 'a';//the explanation is the same as above
 	int actual_number = abs(coordinates.number - 8);
 	fields.at(actual_letter).at(actual_number).setPiece(pieceType, pieceColor);
+}
+
+std::ostream& operator<<(std::ostream& out, const Board& board)
+{
+	//TODO: Colorize the output
+	for (int j = 0;j < DEFAULT_BOARD_SIZE;++j)
+	{
+		for (int i = 0;i < DEFAULT_BOARD_SIZE;++i)
+		{
+			switch (board.fields.at(i).at(j).getPiece().type)
+			{
+			case Pawn:
+				out << (char)Pawn;
+				break;
+			case Knight:
+				out << (char)Knight;
+				break;
+			case Bishop:
+				out << (char)Bishop;
+				break;
+			case Rook:
+				out << (char)Rook;
+				break;
+			case Queen:
+				out << (char)Queen;
+				break;
+			case King:
+				out << (char)King;
+				break;
+			case Unavailable:
+			case Empty:
+			default:
+				out << 0;
+				break;
+			}
+			out << " ";
+		}
+		out << "\n";
+	}
+	return out;
 }

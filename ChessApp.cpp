@@ -5,5 +5,7 @@
 
 int main()
 {
-	std::cout << sizeof(ChessCoordinate) << "\n";
+	Board board;
+	board.defaultSetup();
+	std::cout << board << "\n";
 }

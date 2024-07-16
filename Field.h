@@ -12,8 +12,8 @@ public:
 	Field();
 	Field(PieceType pieceType);
 	Field(PieceType pieceType, PieceColor pieceColor);
-	PieceType pieceType();
-	Piece getPiece();
+	PieceType pieceType() const;
+	Piece getPiece() const;
 
 
 
