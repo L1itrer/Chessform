@@ -22,11 +22,9 @@ public:
 	
 	void defaultSetup();
 
-	Piece getPieceAt();
-	void setPieceAt(Piece piece);
-
-	void draw_board();
-	void draw_pieces();
+	Piece getPieceAt(ChessCoordinate coordinates);
+	void setPieceAt(Piece piece, ChessCoordinate coordinates);
+	void setPieceAt(PieceType pieceType, PieceColor pieceColor, ChessCoordinate);
 };
 
 
